@@ -16,7 +16,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
             })
-            .then(err => {
+            .catch(err => {
                 console.error(err);
             })
     }
