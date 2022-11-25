@@ -1,3 +1,4 @@
+import Allproducts from "../../Pages/Allproducts/Allproducts";
 import Blog from "../../Pages/Blog/Blog";
 import Signup from "../../Pages/Signup/Signup";
 
@@ -26,6 +27,11 @@ export const router = createBrowserRouter([
             {
                 path: 'blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: 'allProducts/:name',
+                element: <Allproducts></Allproducts>,
+                loader: ({ params }) => fetch(`http://localhost:5000/allProducts/${params?.name}`)
             },
         ]
     }
