@@ -6,11 +6,12 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../Authprovider/Authprovider';
 
 const Signup = () => {
-    const { creatUser, googleLogin } = useContext(AuthContext)
+    const { creatUser, googleLogin, updateUser } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm()
 
 
     const handleSignup = data => {
+        console.log(data);
         creatUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
@@ -18,9 +19,25 @@ const Signup = () => {
                 if (userEvent.uid) {
                     toast.success('succesfully login')
                 }
+
+                const userInfo = {
+                    displayName: data.name
+                }
+
+                updateUser(userInfo)
+                    .then(() => { })
+                    .catch(err => {
+                        console.error(err);
+                    })
+
             })
             .catch(error => console.error(error))
     }
+
+
+
+
+
     const handleGoogleLogin = () => {
         googleLogin()
             .then(result => {
@@ -62,7 +79,16 @@ const Signup = () => {
                             // pattern: { value: /([!@#$%^&*])([a-z])/, message: 'passwors must be strong' }
                         })} placeholder="Password" className="input input-bordered w-full max-w-xs" />
                         {errors.password && <p>{errors.password.message}</p>}
+                    </div>
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">Please selected one</span>
+                        </label>
 
+                        <select type="role" {...register("role")} className="select select-bordered w-full max-w-xs" required>
+                            <option>Buyer</option>
+                            <option>Sellar</option>
+                        </select>
                     </div>
                     <input className='w-full btn btn-accent mt-5' value='Sign up' type="submit" />
                 </form>

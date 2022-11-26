@@ -22,7 +22,6 @@ const Header = () => {
             {
                 user?.uid ?
                     <li><button onClick={handleLogout} className="btn btn-ghost">Logout</button></li>
-
                     :
                     <li><Link to="/login">Login</Link></li>
             }

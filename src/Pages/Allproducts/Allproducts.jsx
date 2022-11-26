@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Bookingmodal from './Bookingmodal';
 import Product from './Product';
@@ -5,6 +6,7 @@ import Product from './Product';
 const Allproducts = () => {
 
     const products = useLoaderData()
+    const [booking, setBooking] = useState(null)
 
     return (
         <div>
@@ -14,11 +16,18 @@ const Allproducts = () => {
                     products.map(product => <Product
                         key={product._id}
                         product={product}
+                        setBooking={setBooking}
                     ></Product>)
                 }
             </div>
             <div>
-                <Bookingmodal></Bookingmodal>
+                {
+                    booking &&
+                    <Bookingmodal
+                        setBooking={setBooking}
+                        booking={booking}
+                    ></Bookingmodal>
+                }
             </div>
         </div>
     );
