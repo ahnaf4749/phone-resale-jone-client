@@ -1,13 +1,14 @@
 import userEvent from '@testing-library/user-event';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Authprovider/Authprovider';
 
 const Signup = () => {
     const { creatUser, googleLogin, updateUser } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm()
+    const navigate = useNavigate()
 
 
     const handleSignup = data => {
@@ -16,8 +17,8 @@ const Signup = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                if (userEvent.uid) {
-                    toast.success('succesfully login')
+                if (user.uid) {
+                    toast.success('Creat succesfully')
                 }
 
                 const userInfo = {
@@ -25,7 +26,9 @@ const Signup = () => {
                 }
 
                 updateUser(userInfo)
-                    .then(() => { })
+                    .then(() => {
+                        saveUser(data.name, data.email, data.role)
+                    })
                     .catch(err => {
                         console.error(err);
                     })
@@ -34,7 +37,20 @@ const Signup = () => {
             .catch(error => console.error(error))
     }
 
-
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role }
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                navigate('/')
+            })
+    }
 
 
 

@@ -2,6 +2,7 @@ import Dashboardlayout from "../../Layout/Dashboardlayout/Dashboardlayout";
 import Allproducts from "../../Pages/Allproducts/Allproducts";
 import Blog from "../../Pages/Blog/Blog";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
+import Myorders from "../../Pages/Myorders/Myorders";
 import Signup from "../../Pages/Signup/Signup";
 import Privateroute from "../Privateroute/Privateroute";
 
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
             {
                 path: 'blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: 'myorders',
+                element: <Myorders></Myorders>
             },
             {
                 path: 'allProducts/:name',
