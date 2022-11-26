@@ -55,7 +55,7 @@ const Signup = () => {
     return (
         <div className='h-[800px] flex justify-center items-center'>
             <div className='w-96 p-7'>
-                <h2 className='text-xl text-center font-bold'>Login</h2>
+                <h2 className='text-xl text-center font-bold'>Sign up</h2>
                 <form onSubmit={handleSubmit(handleSignup)}>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">

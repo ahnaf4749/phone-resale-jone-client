@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Authprovider/Authprovider';
 
 const Bookingmodal = ({ booking, setBooking }) => {
@@ -17,8 +18,6 @@ const Bookingmodal = ({ booking, setBooking }) => {
         const phone = form.phone.value;
         const metting = form.metting.value;
 
-        // console.log(name, email, sellar_name, orginal_price, resale_price, phone, metting);
-
         const booking = {
             userName: userName,
             phoneName: name,
@@ -30,8 +29,27 @@ const Bookingmodal = ({ booking, setBooking }) => {
             metting
 
         }
-        setBooking(null)
 
+        fetch('http://localhost:5000/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+
+                if (data.acknowledged) {
+                    setBooking(null)
+                    toast.success('appoienment succesfully')
+                }
+                else {
+                    toast.error(data.message)
+                }
+            })
+            .catch(err => console.error(err))
     }
 
     return (
