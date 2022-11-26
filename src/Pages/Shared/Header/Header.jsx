@@ -21,7 +21,10 @@ const Header = () => {
             <li><Link to="/blog">Blog</Link></li>
             {
                 user?.uid ?
-                    <li><button onClick={handleLogout} className="btn btn-ghost">Logout</button></li>
+                    <>
+                        <li><Link to="/dashboard">Dashboard</Link></li>
+                        <li><button onClick={handleLogout} className="btn btn-ghost">Logout</button></li>
+                    </>
                     :
                     <li><Link to="/login">Login</Link></li>
             }

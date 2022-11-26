@@ -1,6 +1,8 @@
 import Allproducts from "../../Pages/Allproducts/Allproducts";
 import Blog from "../../Pages/Blog/Blog";
+import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import Signup from "../../Pages/Signup/Signup";
+import Privateroute from "../Privateroute/Privateroute";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layout/Main/Main");
@@ -34,5 +36,9 @@ export const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/allProducts/${params?.name}`)
             },
         ]
+    },
+    {
+        path: '/dashboard',
+        element: <Privateroute><Dashboard></Dashboard></Privateroute>
     }
 ])

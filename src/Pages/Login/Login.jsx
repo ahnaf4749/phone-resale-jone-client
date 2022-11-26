@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../Authprovider/Authprovider';
 
@@ -8,6 +8,11 @@ const Login = () => {
 
     const { login, googleLogin } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
+    const location = useLocation()
+    const navigate = useNavigate()
+
+
+    const from = location.state?.from?.pathname || "/";
 
 
     const handleLogin = data => {
@@ -17,6 +22,7 @@ const Login = () => {
                 const user = result.user;
                 if (user.uid) {
                     toast.success('login succesfully')
+                    navigate(from, { replace: true })
                 }
             })
             .catch(err => {
@@ -29,6 +35,7 @@ const Login = () => {
                 const user = result.user;
                 if (user.uid) {
                     toast.success('login succesfully')
+                    navigate(from, { replace: true })
                 }
             })
             .catch(err => {
