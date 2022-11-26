@@ -33,7 +33,7 @@ const Product = ({ product }) => {
                     </table>
                 </div>
                 <div className="card-actions justify-between">
-                    <button className="btn btn-primary">Book now</button>
+                    <label htmlFor="booking-modal" className="btn btn-primary">Book now</label>
                     <button className="btn btn-primary">Add to Wish</button>
                 </div>
             </div>

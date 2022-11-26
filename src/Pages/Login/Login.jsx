@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Authprovider/Authprovider';
 
 const Login = () => {
 
-    const { login } = useContext(AuthContext);
+    const { login, googleLogin } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
 
 
@@ -14,7 +15,21 @@ const Login = () => {
         login(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                if (user.uid) {
+                    toast.success('login succesfully')
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    }
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                const user = result.user;
+                if (user.uid) {
+                    toast.success('login succesfully')
+                }
             })
             .catch(err => {
                 console.error(err);
@@ -46,7 +61,7 @@ const Login = () => {
                 </form>
                 <p className='mt-4'>Don't have an account yet? <Link className='text-secondary' to='/signup'>Sign up</Link></p>
                 <div className="divider">OR</div>
-                <button className='font-bold btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleLogin} className='font-bold btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );

@@ -2,11 +2,11 @@ import userEvent from '@testing-library/user-event';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify';
 import { AuthContext } from '../../Authprovider/Authprovider';
 
 const Signup = () => {
-    const { creatUser } = useContext(AuthContext)
+    const { creatUser, googleLogin } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm()
 
 
@@ -16,10 +16,23 @@ const Signup = () => {
                 const user = result.user;
                 console.log(user);
                 if (userEvent.uid) {
-                    toast.success('sucess')
+                    toast.success('succesfully login')
                 }
             })
             .catch(error => console.error(error))
+    }
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                if (user.uid) {
+                    toast.success('login succesfully')
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            })
     }
 
     return (
@@ -55,7 +68,7 @@ const Signup = () => {
                 </form>
                 <p className='mt-4'>Already have an acount <Link className='text-secondary' to='/login'>Please Login</Link></p>
                 <div className="divider">OR</div>
-                <button className='font-bold btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
+                <button onClick={handleGoogleLogin} className='font-bold btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
             </div>
         </div>
     );

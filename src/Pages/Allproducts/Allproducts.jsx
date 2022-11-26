@@ -1,4 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
+import Bookingmodal from './Bookingmodal';
 import Product from './Product';
 
 const Allproducts = () => {
@@ -15,6 +16,9 @@ const Allproducts = () => {
                         product={product}
                     ></Product>)
                 }
+            </div>
+            <div>
+                <Bookingmodal></Bookingmodal>
             </div>
         </div>
     );
