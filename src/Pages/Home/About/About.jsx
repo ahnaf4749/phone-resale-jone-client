@@ -4,7 +4,7 @@ import AboutAcco from './AboutAcco';
 
 const About = () => {
     return (
-        <div className='sumu'>
+        <div className='sumu my-10'>
             <div className="hero">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className='w-1/2'>

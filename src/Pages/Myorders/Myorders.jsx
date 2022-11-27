@@ -20,13 +20,13 @@ const Myorders = () => {
     }
 
     return (
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto w-full">
             <table className="table w-full">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Job</th>
+                        <th>Avatar</th>
+                        <th>Phone name</th>
+                        <th>Cureant price</th>
                         <th>Payment</th>
                     </tr>
                 </thead>
@@ -34,10 +34,20 @@ const Myorders = () => {
                     {
                         bookings.map((booking, i) =>
                             <tr>
-                                <th>{i + 1}</th>
+                                <td>
+                                    <div className="flex items-center space-x-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src={booking.image} alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td>{booking.phoneName}</td>
-                                <td>Quality Control Specialist</td>
-                                <td>pay</td>
+                                <td>{booking.resale_price} Taka</td>
+                                <th>
+                                    <button className="btn btn-ghost btn-xs">Pay</button>
+                                </th>
                             </tr>
                         )
                     }
