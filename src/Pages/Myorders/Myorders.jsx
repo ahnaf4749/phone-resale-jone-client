@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Authprovider/Authprovider';
@@ -8,6 +9,10 @@ const Myorders = () => {
     const { user } = useContext(AuthContext)
 
     const url = `http://localhost:5000/bookings?email=${user?.email}`
+
+    if (!user?.email) {
+        return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
+    }
 
     const { data: bookings = [], isLoading } = useQuery({
         queryKey: ['bookings'],

@@ -61,11 +61,11 @@ const Bookingmodal = ({ booking, setBooking }) => {
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="text-lg font-bold">{name}</h3>
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-10'>
-                        <input name='name' type="text" readOnly defaultValue={user?.displayName} placeholder="Your Name" className="input input-bordered w-full" />
-                        <input name='email' type="" readOnly defaultValue={user?.email} placeholder="" className="input input-bordered w-full" />
-                        <input name='sellar_name' type="" readOnly defaultValue={seller_name} placeholder="" className="input input-bordered w-full" />
-                        <input name='orginal_price' type="" readOnly defaultValue={original_price} placeholder="" className="input input-bordered w-full" />
-                        <input name='resale_price' type="" readOnly defaultValue={resale_price} placeholder="" className="input input-bordered w-full" />
+                        <input name='name' type="text" disabled defaultValue={user?.displayName} placeholder="Your Name" className="input input-bordered w-full" />
+                        <input name='email' type="" disabled defaultValue={user?.email} placeholder="" className="input input-bordered w-full" />
+                        <input name='sellar_name' type="" disabled defaultValue={seller_name} placeholder="" className="input input-bordered w-full" />
+                        <input name='orginal_price' type="" disabled defaultValue={original_price} placeholder="" className="input input-bordered w-full" />
+                        <input name='resale_price' type="" disabled defaultValue={resale_price} placeholder="" className="input input-bordered w-full" />
                         <input name='phone' type="text" placeholder="Your Phon Number" className="input input-bordered w-full" required />
                         <input name='metting' type="text" placeholder="Meeting location" className="input input-bordered w-full" required />
                         <input className='btn btn-accent w-full' type='submit' value='Submit'></input>
