@@ -1,6 +1,7 @@
 import Dashboardlayout from "../../Layout/Dashboardlayout/Dashboardlayout";
 import Allproducts from "../../Pages/Allproducts/Allproducts";
 import Blog from "../../Pages/Blog/Blog";
+import Addproducts from "../../Pages/Dashboard/Addproducts/Addproducts";
 import Allsellars from "../../Pages/Dashboard/Allsellars/Allsellars";
 import Allusers from "../../Pages/Dashboard/Allusers/Allusers";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
@@ -50,8 +51,8 @@ export const router = createBrowserRouter([
         element: <Privateroute><Dashboardlayout></Dashboardlayout></Privateroute>,
         children: [
             {
-                path: '/dashboard',
-                element: <Dashboard></Dashboard>
+                path: '/dashboard/addproducts',
+                element: <Addproducts></Addproducts>
             },
             {
                 path: '/dashboard/allusers',
@@ -60,7 +61,11 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/allsellars',
                 element: <Allsellars></Allsellars>
-            }
+            },
+            // {
+            //     path: '/dashboard/addproducts',
+            //     element: 
+            // }
         ]
     }
 ])
