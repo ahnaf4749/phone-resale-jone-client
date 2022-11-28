@@ -1,6 +1,7 @@
 import Dashboardlayout from "../../Layout/Dashboardlayout/Dashboardlayout";
 import Allproducts from "../../Pages/Allproducts/Allproducts";
 import Blog from "../../Pages/Blog/Blog";
+import Allsellars from "../../Pages/Dashboard/Allsellars/Allsellars";
 import Allusers from "../../Pages/Dashboard/Allusers/Allusers";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import Myorders from "../../Pages/Myorders/Myorders";
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/allusers',
                 element: <Allusers></Allusers>
+            },
+            {
+                path: '/dashboard/allsellars',
+                element: <Allsellars></Allsellars>
             }
         ]
     }

@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 
-const Allusers = () => {
+const Allsellars = () => {
 
     const { data: allUsers = [] } = useQuery({
         queryKey: ['users'],
-        queryFn: () => fetch(`http://localhost:5000/users?role=Buyer`)
+        queryFn: () => fetch(`http://localhost:5000/users?role=Sellar`)
             .then(res => res.json())
     })
 
@@ -13,9 +13,10 @@ const Allusers = () => {
             <table className="table w-full">
                 <thead>
                     <tr>
-                        <th>Buyer Name</th>
-                        <th>email</th>
+                        <th>Sellar Name</th>
+                        <th>Phone name</th>
                         <th>Role</th>
+                        <th>verified</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -26,6 +27,9 @@ const Allusers = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>
+                                <th>
+                                    <button className="btn btn-ghost btn-xs btn-active">verified</button>
+                                </th>
                                 <th>
                                     <button className="btn btn-ghost btn-xs btn-active">Delete</button>
                                 </th>
@@ -38,4 +42,4 @@ const Allusers = () => {
     );
 };
 
-export default Allusers;
+export default Allsellars;
