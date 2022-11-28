@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 const Addproducts = () => {
 
@@ -21,7 +22,31 @@ const Addproducts = () => {
             .then(res => res.json())
             .then(imageData => {
                 if (imageData.success) {
-                    console.log(imageData.data.url);
+                    const addProduct = {
+                        image: imageData.data.url,
+                        name: data.Product_name,
+                        brand: data.brand,
+                        model: data.model,
+                        original_price: data.orginal_price,
+                        resale_price: data.resale_price,
+                        seller_name: data.name,
+                        location: data.location,
+                        condition: data.condetion,
+                        used: data.used
+                    }
+                    fetch('http://localhost:5000/addProducts', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(addProduct)
+                    })
+                        .then(res => res.json())
+                        .then(result => {
+                            if (result.acknowledged) {
+                                toast.success(`product added succesfully`)
+                            }
+                        })
                 }
             })
     }

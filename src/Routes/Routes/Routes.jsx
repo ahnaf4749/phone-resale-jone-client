@@ -5,6 +5,7 @@ import Addproducts from "../../Pages/Dashboard/Addproducts/Addproducts";
 import Allsellars from "../../Pages/Dashboard/Allsellars/Allsellars";
 import Allusers from "../../Pages/Dashboard/Allusers/Allusers";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
+import Myproducts from "../../Pages/Dashboard/Myproducts/Myproducts";
 import Myorders from "../../Pages/Myorders/Myorders";
 import Signup from "../../Pages/Signup/Signup";
 import Privateroute from "../Privateroute/Privateroute";
@@ -62,10 +63,10 @@ export const router = createBrowserRouter([
                 path: '/dashboard/allsellars',
                 element: <Allsellars></Allsellars>
             },
-            // {
-            //     path: '/dashboard/addproducts',
-            //     element: 
-            // }
+            {
+                path: '/dashboard/myproducts',
+                element: <Myproducts></Myproducts>
+            }
         ]
     }
 ])
