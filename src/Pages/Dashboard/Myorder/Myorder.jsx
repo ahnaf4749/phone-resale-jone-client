@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Authprovider/Authprovider';
 
 
@@ -52,7 +53,15 @@ const Myorder = () => {
                                 <td>{booking.phoneName}</td>
                                 <td>{booking.resale_price} Taka</td>
                                 <th>
-                                    <button className="btn btn-ghost btn-xs">Pay</button>
+                                    {
+                                        booking.resale_price && !booking.pay &&
+                                        <Link to={`/dashboard/payment/${booking._id}`}>
+                                            <button className="btn btn-active btn-ghost btn-xs">Pay</button>
+                                        </Link>
+                                    }
+                                    {
+                                        booking.resale_price && booking.pay && <span>Paid</span>
+                                    }
                                 </th>
                             </tr>
                         )

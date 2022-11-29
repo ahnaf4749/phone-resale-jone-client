@@ -44,7 +44,7 @@ const Bookingmodal = ({ booking, setBooking }) => {
 
                 if (data.acknowledged) {
                     setBooking(null)
-                    toast.success('appoienment succesfully')
+                    toast.success('Booking succesfully')
                 }
                 else {
                     toast.error(data.message)
