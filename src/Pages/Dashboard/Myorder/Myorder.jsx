@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
-import { AuthContext } from '../../Authprovider/Authprovider';
+import { AuthContext } from '../../../Authprovider/Authprovider';
 
-const Myorders = () => {
+
+const Myorder = () => {
 
 
     const { user } = useContext(AuthContext)
@@ -25,7 +26,7 @@ const Myorders = () => {
     }
 
     return (
-        <div className="overflow-x-auto w-full">
+        <div className="overflow-x-auto w-full mt-4">
             <table className="table w-full">
                 <thead>
                     <tr>
@@ -62,4 +63,4 @@ const Myorders = () => {
     );
 };
 
-export default Myorders;
+export default Myorder;
