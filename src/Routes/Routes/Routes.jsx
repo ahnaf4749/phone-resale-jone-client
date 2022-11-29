@@ -8,6 +8,7 @@ import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import Myorder from "../../Pages/Dashboard/Myorder/Myorder";
 import Myproducts from "../../Pages/Dashboard/Myproducts/Myproducts";
 import Signup from "../../Pages/Signup/Signup";
+import AdminRoute from "../Adminroute/Adminroute";
 import Privateroute from "../Privateroute/Privateroute";
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layout/Main/Main");
