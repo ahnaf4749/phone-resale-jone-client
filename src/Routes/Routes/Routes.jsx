@@ -62,7 +62,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/allsellars',
-                element: <Allsellars></Allsellars>
+                element: <AdminRoute><Allsellars></Allsellars></AdminRoute>
             },
             {
                 path: '/dashboard/myproducts',

@@ -9,7 +9,7 @@ const AdminRoute = ({ children }) => {
     const [isAdmin, isLoading] = useAdmin(user?.email)
     const location = useLocation()
 
-    if (loading && isLoading) {
+    if (loading || isLoading) {
         return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
     }
 

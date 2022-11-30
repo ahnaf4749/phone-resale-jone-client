@@ -49,6 +49,7 @@ const Signup = () => {
             .then(res => res.json())
             .then(data => {
                 navigate('/')
+                window.location.reload()
             })
     }
 
