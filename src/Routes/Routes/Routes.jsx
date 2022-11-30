@@ -11,6 +11,7 @@ import Payment from "../../Pages/Dashboard/Payment/Payment";
 import Signup from "../../Pages/Signup/Signup";
 import AdminRoute from "../Adminroute/Adminroute";
 import Privateroute from "../Privateroute/Privateroute";
+import Sellarroute from "../Sellarroute/Sellarroute";
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layout/Main/Main");
 const { default: Home } = require("../../Pages/Home/Home/Home");
@@ -54,11 +55,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/addproducts',
-                element: <Addproducts></Addproducts>
+                element: <Sellarroute><Addproducts></Addproducts></Sellarroute>
             },
             {
                 path: '/dashboard/allusers',
-                element: <Allusers></Allusers>
+                element: <AdminRoute><Allusers></Allusers></AdminRoute>
             },
             {
                 path: '/dashboard/allsellars',
@@ -66,7 +67,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/myproducts',
-                element: <Myproducts></Myproducts>
+                element: <Sellarroute><Myproducts></Myproducts></Sellarroute>
             },
             {
                 path: '/dashboard/myorder',
