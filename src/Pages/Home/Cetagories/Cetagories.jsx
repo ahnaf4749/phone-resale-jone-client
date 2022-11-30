@@ -12,7 +12,7 @@ const Cetagories = () => {
     }, [])
 
     return (
-        <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 my-20 gap-6'>
+        <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 my-14 gap-6'>
             {cetagories.map(cetagorie => <Cetagorie
                 key={cetagorie._id}
                 cetagorie={cetagorie}

@@ -38,6 +38,23 @@ const Myproducts = () => {
             })
     }
 
+
+    const handleAdmin = id => {
+        // console.log(id);
+        fetch(`http://localhost:5000/allProducts/advertised/${id}`, {
+            method: "PUT"
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    toast.success('wow! Your product added succesfully, plz cheak Home route')
+                    refetch()
+                    console.log(data);
+                }
+            })
+
+    }
+
     return (
         <div>
             <div className="overflow-x-auto w-full my-5">
@@ -69,11 +86,13 @@ const Myproducts = () => {
                                     <td>{product.resale_price} Taka</td>
                                     <td>{product.seller_name}</td>
                                     <th>
-                                        <button className="btn btn-ghost btn-xs btn-active">advertised</button>
+                                        {/* <td>{user?.role !== 'admin' && <button className="btn glass text-primary">Make Admin</button>}</td> */}
+                                        {product?.advertised !== 'advertised' && <button onClick={() => handleAdmin(product._id)} className="btn btn-ghost btn-xs btn-active">advertised</button>}
                                     </th>
                                     <th>
                                         <label htmlFor="confarmetion-modal" onClick={() => setDeleteModal(product)} className="btn btn-ghost btn-xs btn-active">Delete</label>
                                     </th>
+
                                 </tr>
                             )
                         }
