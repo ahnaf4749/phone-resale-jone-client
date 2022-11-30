@@ -8,6 +8,10 @@ const Allsellars = () => {
             .then(res => res.json())
     })
 
+    const handleDelete = id => {
+        console.log(id);
+    }
+
     return (
         <div className="overflow-x-auto w-full my-5">
             <table className="table w-full">
@@ -31,7 +35,7 @@ const Allsellars = () => {
                                     <button className="btn btn-ghost btn-xs btn-active">verified</button>
                                 </th>
                                 <th>
-                                    <button className="btn btn-ghost btn-xs btn-active">Delete</button>
+                                    <button onClick={() => handleDelete(user._id)} className="btn btn-ghost btn-xs btn-active">Delete</button>
                                 </th>
                             </tr>
                         )

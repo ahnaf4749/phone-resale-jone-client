@@ -12,7 +12,7 @@ const Cheakoutform = ({ data }) => {
     const stripe = useStripe();
     const elements = useElements();
 
-    const { resale_price, email, userName } = data;
+    const { resale_price, email, userName, _id } = data;
 
     useEffect(() => {
         if (resale_price) {
@@ -74,8 +74,30 @@ const Cheakoutform = ({ data }) => {
         }
         console.log('paymentIntent', paymentIntent);
         if (paymentIntent.status === "succeeded") {
-            setSucceed('congrats! your payment successfully');
-            setTransationId(paymentIntent.id);
+
+            const payment = {
+                resale_price,
+                transationId: paymentIntent.id,
+                email,
+                booking: _id
+
+            }
+
+            fetch('http://localhost:5000/payments', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payment)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.insertedId) {
+                        setSucceed('congrats! your payment successfully');
+                        setTransationId(paymentIntent.id);
+                    }
+                })
         }
         setProccesing(false)
     }
