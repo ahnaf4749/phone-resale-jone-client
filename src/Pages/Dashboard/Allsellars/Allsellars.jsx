@@ -33,6 +33,7 @@ const Allsellars = () => {
 
     return (
         <div>
+            <h2 className='text-center font-bold text-3xl underline my-10'>All Sellar</h2>
             <div className="overflow-x-auto w-full my-5">
                 <table className="table w-full">
                     <thead>
