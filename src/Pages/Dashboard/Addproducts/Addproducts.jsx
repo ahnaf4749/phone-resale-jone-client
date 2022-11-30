@@ -126,7 +126,7 @@ const Addproducts = () => {
                 </div>
             </div>
             <div className='flex justify-center'>
-                <input className='btn btn-accent mt-5' value='Sign up' type="submit" />
+                <input className='btn btn-accent mt-5' value="Add product" type="submit" />
             </div>
         </form>
     );
