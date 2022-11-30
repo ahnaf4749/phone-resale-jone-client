@@ -10,7 +10,7 @@ const Myproducts = () => {
     const [deleteModal, setDeleteModal] = useState(null)
     const { user } = useContext(AuthContext)
 
-    const url = `http://localhost:5000/allProductsMy?email=${user?.email}`;
+    const url = `https://resale-jone-servar.vercel.app/allProductsMy?email=${user?.email}`;
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
@@ -25,7 +25,7 @@ const Myproducts = () => {
     }
 
     const handleDelete = product => {
-        fetch(`http://localhost:5000/allProducts/${product._id}`, {
+        fetch(`https://resale-jone-servar.vercel.app/allProducts/${product._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -41,7 +41,7 @@ const Myproducts = () => {
 
     const handleAdmin = id => {
         // console.log(id);
-        fetch(`http://localhost:5000/allProducts/advertised/${id}`, {
+        fetch(`https://resale-jone-servar.vercel.app/allProducts/advertised/${id}`, {
             method: "PUT"
         })
             .then(res => res.json())

@@ -37,7 +37,7 @@ const Addproducts = () => {
                         used: data.used,
                         email: user.email
                     }
-                    fetch('http://localhost:5000/allProducts', {
+                    fetch('https://resale-jone-servar.vercel.app/allProducts', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

@@ -6,7 +6,7 @@ const Cetagories = () => {
     const [cetagories, setCetagories] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/allCetagories')
+        fetch('https://resale-jone-servar.vercel.app/allCetagories')
             .then(res => res.json())
             .then(data => setCetagories(data))
     }, [])

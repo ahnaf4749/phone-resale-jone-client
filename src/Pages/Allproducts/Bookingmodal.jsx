@@ -31,7 +31,7 @@ const Bookingmodal = ({ booking, setBooking }) => {
 
         }
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://resale-jone-servar.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

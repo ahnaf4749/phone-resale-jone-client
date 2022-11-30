@@ -8,7 +8,7 @@ const Allsellars = () => {
     const [deleteModal, setDeleteModal] = useState(null)
     const { data: allUsers = [], refetch } = useQuery({
         queryKey: ['users'],
-        queryFn: () => fetch(`http://localhost:5000/users?role=Sellar`)
+        queryFn: () => fetch(`https://resale-jone-servar.vercel.app/users?role=Sellar`)
             .then(res => res.json())
     })
 
@@ -18,7 +18,7 @@ const Allsellars = () => {
 
     const handleDelete = user => {
         console.log(user._id);
-        fetch(`http://localhost:5000/users/${user._id}`, {
+        fetch(`https://resale-jone-servar.vercel.app/users/${user._id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -32,7 +32,7 @@ const Allsellars = () => {
     }
 
     const handleverify = id => {
-        fetch(`http://localhost:5000/users/verify/${id}`, {
+        fetch(`https://resale-jone-servar.vercel.app/users/verify/${id}`, {
             method: "PUT"
         })
             .then(res => res.json())

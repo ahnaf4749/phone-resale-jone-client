@@ -27,7 +27,7 @@ const Signup = () => {
 
                 updateUser(userInfo)
                     .then(() => {
-                        saveUser(data.name, data.email, data.role)
+                        saveUser(data)
                     })
                     .catch(err => {
                         console.error(err);
@@ -37,9 +37,9 @@ const Signup = () => {
             .catch(error => console.error(error))
     }
 
-    const saveUser = (name, email, role) => {
-        const user = { name, email, role }
-        fetch('http://localhost:5000/users', {
+    const saveUser = (user) => {
+        // const user = { name, email, role }
+        fetch('https://resale-jone-servar.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -65,6 +65,7 @@ const Signup = () => {
                     email: user.email
                 }
                 saveUser({ ...googleUser, role: 'Buyer' })
+
                 console.log(googleUser);
                 if (user.uid) {
                     toast.success('login succesfully')

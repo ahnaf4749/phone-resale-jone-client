@@ -6,7 +6,7 @@ const Adviesment = () => {
 
     const { data: allUsers = [], refetch } = useQuery({
         queryKey: ['users'],
-        queryFn: () => fetch(`http://localhost:5000/allProducts?advertised=advertised`)
+        queryFn: () => fetch(`https://resale-jone-servar.vercel.app/allProducts?advertised=advertised`)
             .then(res => res.json())
     })
 

@@ -10,7 +10,7 @@ const Myorder = () => {
 
     const { user } = useContext(AuthContext)
 
-    const url = `http://localhost:5000/bookings?email=${user?.email}`
+    const url = `https://resale-jone-servar.vercel.app/bookings?email=${user?.email}`
 
     if (!user?.email) {
         return <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin dark:border-violet-400"></div>
