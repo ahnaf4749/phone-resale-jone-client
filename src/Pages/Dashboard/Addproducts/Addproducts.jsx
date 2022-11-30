@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../../../Authprovider/Authprovider';
 
 const Addproducts = () => {
-
+    const { user } = useContext(AuthContext)
     const { register, handleSubmit } = useForm()
     const imageHostKey = process.env.REACT_APP_imgbb_key;
     console.log(imageHostKey);
+    const navigate = useNavigate()
 
 
     const handleSignup = (data) => {
-        console.log(data);
         const image = data.image[0];
         const formData = new FormData();
         formData.append('image', image);
@@ -32,9 +34,10 @@ const Addproducts = () => {
                         seller_name: data.name,
                         location: data.location,
                         condition: data.condetion,
-                        used: data.used
+                        used: data.used,
+                        email: user.email
                     }
-                    fetch('http://localhost:5000/addProducts', {
+                    fetch('http://localhost:5000/allProducts', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -45,6 +48,7 @@ const Addproducts = () => {
                         .then(result => {
                             if (result.acknowledged) {
                                 toast.success(`product added succesfully`)
+                                navigate('/dashboard/myproducts')
                             }
                         })
                 }
