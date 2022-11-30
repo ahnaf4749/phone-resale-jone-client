@@ -31,6 +31,21 @@ const Allsellars = () => {
             })
     }
 
+    const handleverify = id => {
+        fetch(`http://localhost:5000/users/verify/${id}`, {
+            method: "PUT"
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    toast.success('Seller verified succesfully')
+                    refetch()
+                    console.log(data);
+                }
+            })
+
+    }
+
     return (
         <div>
             <h2 className='text-center font-bold text-3xl underline my-10'>All Sellar</h2>
@@ -53,7 +68,7 @@ const Allsellars = () => {
                                     <td>{user.email}</td>
                                     <td>{user.role}</td>
                                     <th>
-                                        <button className="btn btn-ghost btn-xs btn-active">verified</button>
+                                        {user?.cheak !== 'verify' && <button onClick={() => handleverify(user._id)} className="btn btn-ghost btn-xs btn-active">verified</button>}
                                     </th>
                                     <th>
                                         <label htmlFor="confarmetion-modal" onClick={() => setDeleteModal(user)} className="btn btn-ghost btn-xs btn-active">Delete</label>
